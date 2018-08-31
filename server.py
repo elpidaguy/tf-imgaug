@@ -38,28 +38,6 @@ def webupload():
 	output_labels =[]
 	final = os.path.join(upload, filename)
 	Newlable = calculate(final,output_labels)
-	#return Response("recived",mimetype='text/plain')
-	#return jsonify({"Tree is":Newlable[0][0]})
-	# results = mongo.db.plantInfo.find({"Botanical_Name":Newlable[0][0]},{"_id":False, "Location":False}).limit(1)
-	# n_results = []
-	# for res in results:
-	# 	n_results.append(res)
-
-	# locations = mongo.db.plantInfo.find({"Botanical_Name":Newlable[0][0]},{"_id":False, "Location":True})
-	# locres = []
-	# locList = []
-
-	# # print(locations)
-	# for recee in locations:
-	# 	locList.append(recee)
-	# for l in locList[0]["Location"]:
-	# 	# print(l["State"])
-	# 	locres.append([l["City"],l["Latitude"],l["Longitude"]])
-
-		#for r in recee.values():
-		#	print(r['State'])
-		#locList.append([recee[0]["State"],recee["Latitude"],recee["Longitude"]])
-	#return jsonify(locres[0])
 	print (Newlable)
 	return render_template("result.html", results = Newlable)
 
@@ -78,18 +56,13 @@ def calculate(final,output_labels):
 		X = 0
 		for node_id in top_k[:5]:
 			X += predictions[0][node_id]
-			# print(X)
 
-		# print(X)
 		for node_id in top_k[:5]:
 			human_string = label_lines[node_id]
 			score = predictions[0][node_id]
 			score1 = score / X
-			#print(score*100)
 			score1 = score1 * 100
-			#print('%s (score = %.5f)' % (human_string, score))
 			output_labels.append((human_string, str(round(score1,2))))
-	# print(output_labels)
 	return output_labels
 
 @app.route('/augmentation')
