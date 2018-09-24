@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<!--particle js-->
+<script src="https://npmcdn.com/particlesjs@1.0.2/dist/particles.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+window.onload = function() {
+  Particles.init({ options });
+};
+
+// e.g.
+window.onload = function() {
+  Particles.init({
+    selector: '#myCanvas',
+    color: '#ffffff',
+    connectParticles: 'true',
+    sizeVariations: '5'
+  });
+};
+</script>
+
+
+<style>
+html,
+body {
+    background-image: url("{{url_for('static', filename='images/crowd.png')}}");
+    background-size: cover;
+    color: grey;
+    font-family: "Muli",sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+#myCanvas {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+</style>
+<body>
+<canvas id="myCanvas"></canvas>
+<br>
+<!-- <div class="w3-bar w3-green">
+  <a href="#" class="w3-bar-item w3-button w3-center w3-padding-24">Parna - A Leaf Expert</a>
+</div> -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand w3-text-white"  href="/">Face Identification</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Identification</a></li>
+      <li><a href="/augmentation">Augmentation</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="w3-card-8 w3-modal-content" style="max-width: 500px;padding-top: 65px">
+  <!-- <div class="w3-center"><br>
+     <img src="{{url_for('static', filename='images/demo.jpg')}}" style="width:30%"
+      class="w3-circle w3-margin-top">
+  </div> -->
+<h1 class="w3-center w3-text-green">Person Reidentification</h1>
+ <form class="w3-container" method="post" action="webupload" enctype="multipart/form-data">
+ <div class="w3-section w3-center">
+      <img id="prevImage" width="400px" src="{{url_for('static', filename='images/face.jpg')}}" height="400px" /><hr>
+      <input class="btn btn-primary" name="file" type="file" onchange="document.getElementById('prevImage').src = window.URL.createObjectURL(this.files[0])"> 
+      <br>
+     <button class="w3-btn-block w3-indigo w3-section w3-padding" type="submit" value="Upload">Identify</button>
+ </div>
+ </form>
+</div>
+</body>
+</html>
+<!-- $.getJSON("http://freegeoip.net/json/", function(data) {
+    var city = data.city;
+    var latitude = data.latitude;
+    var longitude = data.longitude;
+    
+    $.post(
+              "/webupload",
+              { city:city, latitude:latitude, longitude:longitude }
+           );   
+}); -->

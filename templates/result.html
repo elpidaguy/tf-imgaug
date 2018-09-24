@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app = "myapp">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<!--particle js-->
+<script src="https://npmcdn.com/particlesjs@1.0.2/dist/particles.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDa5X98fK8w6Vt8y_QVQrBolD-X6uYfUi4&sensor=false" type="text/javascript"></script>
+<!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjU6Y4eCZIVlYDXOc2tWrLPoRF9t0-xFk&callback=initMap">
+    </script> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+
+
+
+<script>
+window.onload = function() {
+  Particles.init({ options });
+};
+
+// e.g.
+window.onload = function() {
+  Particles.init({
+    selector: '#myCanvas',
+    color: '#ffffff',
+    connectParticles: 'true',
+    sizeVariations: '5'
+  });
+};
+
+function myFunc(vars){
+  return vars;
+}
+</script>
+
+
+<style>
+html,
+body {
+    background-image: url("{{url_for('static', filename='images/crowd.png')}}");
+    background-size: cover;
+    color: grey;
+    font-family: "Muli",sans-serif;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+#myCanvas {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+</style>
+<body ng-controller = "mycontroller">
+<canvas id="myCanvas"></canvas>
+<br>
+<!-- <div class="w3-bar w3-green">
+  <a href="#" class="w3-bar-item w3-button w3-center w3-padding-24">Parna - A Leaf Expert</a>
+</div> -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand w3-text-white"  href="/">Face Identification</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Identification</a></li>
+      <li><a href="/augmentation">Augmentation</a></li>
+      <li class="active"><a href="#">Result</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="w3-center w3-card-8 w3-modal-content" style="padding-top: 60px">
+
+        <h2>Probable Results</h2>
+        <!-- <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Probability</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for key, value in results %}
+            <tr>
+               <td> {{ key }} </td>
+               <td> {{ value }} </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table> -->
+
+<div class="row w3-margin">
+  {% for key, value in results %}
+
+        <div class="col-md-4">
+          <header class="w3-container w3-blue">
+            <h6>Name : <strong>{{ key }}</strong></h6>
+          </header>
+
+          <div class="w3-container">
+            <p>Probability : <strong>{{ value }}</strong></p>
+          </div>
+        </div>
+
+        {% endfor %}
+</div>
+
+</div>
+</body>
+</html>
