@@ -8,6 +8,8 @@ Project Contains:
 
 Important: Please add your trained model file (Graph.pb) in parent directory.
 
+Run Server.py to use the app.
+
 CNN Classifier Used : https://github.com/tensorflow/tensorflow
 Thanks to : https://github.com/vxy10/ImageAugmentation for augmentation code.
 
