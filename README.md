@@ -6,7 +6,7 @@ Project Contains:
 1. Object Detection Module based on Tensorflow CNN
 2. Image Augmentation for generating additional dataset for training CNN Module
 
-Important: Please add your trained model file (Graph.pb) in parent directory.
+Important: Please add your trained model file (Graph.pb) and Label.txt in parent directory.
 
 Run Server.py to use the app.
 
