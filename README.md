@@ -1,4 +1,8 @@
 # tf-imgaug
+
+[![Generic badge](
+https://img.shields.io/github/license/elpidaguy/tf-imgaug?style=flat-square)](https://github.com/elpidaguy/tf-imgaug/blob/master/LICENSE)
+
 A simple CNN Based object detector and Image Augmenter in python-flask
 
 
